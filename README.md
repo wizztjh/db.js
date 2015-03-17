@@ -109,6 +109,16 @@ All ranges supported by IDBKeyRange can be used.
 	          //do something with the results
 	      } );
 
+### Transform the object being returned
+	server.people.query( 'indexName' )
+		.bound( 'answer', 30, 50 )
+		.map(function (value) { 
+                	return {
+                        	fullName: value.firstName + ' ' + value.lastName,
+                        	raw: value
+                	};
+        	});
+
 ### Atomic updates
 
 Any query that returns a range of results can also be set to modify the returned
